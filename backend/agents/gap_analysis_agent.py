@@ -10,7 +10,7 @@ class GapAnalysisAgent:
         Propose 3 specific, novel, and high-impact innovation opportunities based on these gaps.
         """
         
-        response = ollama.chat(model='qwen3:4b', messages=[
+        response = ollama.chat(model='qwen2:1.5b', messages=[
             {'role': 'user', 'content': prompt},
         ])
         return response['message']['content']

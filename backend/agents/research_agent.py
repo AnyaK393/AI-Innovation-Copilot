@@ -17,7 +17,7 @@ class ResearchAgent:
         [List the bottlenecks]
         """
         
-        response = ollama.chat(model='qwen3:4b', messages=[
+        response = ollama.chat(model='qwen2:1.5b', messages=[
             {'role': 'user', 'content': prompt},
         ])
         return response['message']['content']
