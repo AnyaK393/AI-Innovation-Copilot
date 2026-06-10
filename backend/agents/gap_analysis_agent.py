@@ -1,16 +1,12 @@
-import ollama
+from backend.prompts.gap_prompt import GAP_PROMPT
+from backend.services.ollama_service import query_model
 
 class GapAnalysisAgent:
+
     def run(self, research_data):
-        prompt = f"""
-        Analyze the following research:
-        {research_data}
-        
-        Identify the 'Gaps'—what are the problems that existing solutions are failing to address?
-        Propose 3 specific, novel, and high-impact innovation opportunities based on these gaps.
-        """
-        
-        response = ollama.chat(model='qwen2:1.5b', messages=[
-            {'role': 'user', 'content': prompt},
-        ])
-        return response['message']['content']
+
+        prompt = GAP_PROMPT.format(
+            research_data=research_data
+        )
+
+        return query_model(prompt)
